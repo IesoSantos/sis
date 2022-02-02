@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.metro.bagregister.dto.BoletimOcorrenciaDTO;
-import com.metro.bagregister.model.BoletimOcorrencia;
 import com.metro.bagregister.service.BoletimOcorrenciaService;
 
 /**
@@ -38,6 +37,6 @@ public class BoletimOcorrenciaController {
 	
 	@PostMapping("/boletim-ocorrencia")
 	public BoletimOcorrenciaDTO save(@RequestBody @Valid BoletimOcorrenciaDTO dto) {
-		return service.save(BoletimOcorrencia.convert(dto));
+		return service.save(dto);
 	}
 }
