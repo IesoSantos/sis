@@ -26,8 +26,8 @@ public class BoletimOcorrenciaService {
 		return repository.findAll();
 	}
 	
-	public BoletimOcorrenciaDTO save(BoletimOcorrencia obj) {
-		return BoletimOcorrenciaDTO.convert(repository.save(obj));
+	public BoletimOcorrenciaDTO save(BoletimOcorrenciaDTO obj) {
+		return BoletimOcorrenciaDTO.convert(repository.save(BoletimOcorrencia.convert(obj)));
 	}
 	
 	public BoletimOcorrenciaDTO delete(BoletimOcorrencia obj) {

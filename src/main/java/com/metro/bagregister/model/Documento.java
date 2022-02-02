@@ -7,6 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.metro.bagregister.dto.DocumentoDTO;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -28,4 +30,11 @@ public class Documento {
 	private TipoDocumento tipoDocumento;
 	@Column(name = "numero_identificador")
 	private String numeroIdentificador;
+	
+	public static Documento convert(DocumentoDTO dto) {
+		Documento model = new Documento();
+		model.setNumeroIdentificador(dto.getNumeroIdentificador());
+		model.setTipoDocumento(dto.getTipoDocumento());
+		return model;
+	}
 }
