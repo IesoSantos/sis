@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.metro.bagregister.dto.ParteOcorrenciaDTO;
@@ -33,7 +32,7 @@ public class ParteOcorrenciaController {
 	private ParteOcorrenciaService service;
 	
 	@GetMapping(path = "/parte-ocorrencia/" )
-	public @ResponseBody List<ParteOcorrenciaDTO> lista(){
+	public List<ParteOcorrenciaDTO> lista(){
 		return service.getAll();
 	}
 	

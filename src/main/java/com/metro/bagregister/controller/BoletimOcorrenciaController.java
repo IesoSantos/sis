@@ -4,7 +4,6 @@
 package com.metro.bagregister.controller;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
@@ -29,10 +28,7 @@ public class BoletimOcorrenciaController {
 	
 	@GetMapping("/boletim-ocorrencia/")
 	public List<BoletimOcorrenciaDTO> getAll(){
-		return service.findAll()
-				.stream()
-				.map(BoletimOcorrenciaDTO::convert)
-				.collect(Collectors.toList());
+		return service.findAll();
 	}
 	
 	@PostMapping("/boletim-ocorrencia")

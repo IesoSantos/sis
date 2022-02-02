@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.metro.bagregister.dto.EnderecoDTO;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -24,7 +26,9 @@ public class Endereco {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
+	
 	private  String logradouro;
+	
 	private String numero;
 	
 	private String complemento;
@@ -36,4 +40,16 @@ public class Endereco {
 	private String estado;
 	
 	private String cep;
+	
+	public static Endereco convert(EnderecoDTO dto) {
+		Endereco model = new Endereco();
+		model.setBairro(dto.getBairro());
+		model.setCep(dto.getCep());
+		model.setCidade(dto.getCidade());
+		model.setComplemento(dto.getComplemento());
+		model.setEstado(dto.getEstado());
+		model.setLogradouro(dto.getLogradouro());
+		model.setNumero(dto.getNumero());
+		return model;
+	}
 }
