@@ -4,6 +4,7 @@
 package com.metro.bagregister.service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,12 +28,19 @@ public class ParteOcorrenciaService {
 		return ParteOcorrenciaDTO.convert(repository.save(obj));
 	}
 	
-	public List<ParteOcorrenciaDTO> getAll(){
+	public List<ParteOcorrenciaDTO> findAll(){
 		List<ParteOcorrencia> lista = repository.findAll();
 		return lista
 				.stream()
 				.map(ParteOcorrenciaDTO::convert)
 				.collect(Collectors.toList());
+	}
+	
+	public ParteOcorrencia findById(Long id){
+		Optional<ParteOcorrencia>  obj = repository.findById(id);
+		if(obj.isPresent())
+			return obj.get();
+		return null;
 	}
 	
 	public ParteOcorrenciaDTO delete(ParteOcorrencia obj) {

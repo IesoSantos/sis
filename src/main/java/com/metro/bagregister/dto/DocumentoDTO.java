@@ -17,6 +17,7 @@ import lombok.Data;
 @Data
 public class DocumentoDTO {
 	
+	private long id;
 	@NotBlank
 	private TipoDocumento tipoDocumento;
 	@NotBlank
@@ -24,6 +25,7 @@ public class DocumentoDTO {
 	
 	public static DocumentoDTO convert(Documento obj) {
 		DocumentoDTO dto = new DocumentoDTO();
+		dto.setId(obj.getId());
 		dto.setTipoDocumento(obj.getTipoDocumento());
 		dto.setNumeroIdentificador(obj.getNumeroIdentificador());
 		return dto;

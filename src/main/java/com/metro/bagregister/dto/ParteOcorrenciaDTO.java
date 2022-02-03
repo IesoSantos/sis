@@ -23,6 +23,7 @@ import lombok.Data;
 @Data
 public class ParteOcorrenciaDTO {
 	
+	private long id;
 	private String nome;
 	private String nomeMae;
 	private String nomePai;
@@ -42,6 +43,7 @@ public class ParteOcorrenciaDTO {
 	
 	public static ParteOcorrenciaDTO convert(ParteOcorrencia obj) {
 		ParteOcorrenciaDTO dto = new ParteOcorrenciaDTO();
+		dto.setId(obj.getId());
 		dto.setNome(obj.getNome());
 		dto.setNomeMae(obj.getNomeMae());
 		dto.setNomePai(obj.getNomePai());

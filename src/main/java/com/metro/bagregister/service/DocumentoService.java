@@ -4,6 +4,7 @@
 package com.metro.bagregister.service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,14 +31,20 @@ public class DocumentoService {
 				.collect(Collectors.toList());
 	}
 	
+	public Documento findById(long id) {
+		Optional<Documento> obj = repository.findById(id);
+		if(obj.isPresent())
+			return obj.get();
+		return null;
+	}
+	
 	public DocumentoDTO save(DocumentoDTO obj){
 		return DocumentoDTO.convert(repository.save(Documento.convert(obj)));
 	}
 	
-	public DocumentoDTO delete (Long id) {
-		Documento model = repository.findById(id).get();
-		repository.delete(model);
-		return DocumentoDTO.convert(model);
+	public DocumentoDTO delete (Documento obj) {
+		repository.delete(obj);
+		return DocumentoDTO.convert(obj);
 	}
 
 }

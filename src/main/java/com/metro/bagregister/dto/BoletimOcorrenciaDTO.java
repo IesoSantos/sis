@@ -21,7 +21,8 @@ import lombok.Data;
  */
 @Data
 public class BoletimOcorrenciaDTO {
-
+	
+	private long id;
 	@NotNull
 	private List<ParteOcorrencia> partesDaOcorrencia;
 	@NotBlank
@@ -35,6 +36,7 @@ public class BoletimOcorrenciaDTO {
 	
 	public static BoletimOcorrenciaDTO convert(BoletimOcorrencia obj) {
 		BoletimOcorrenciaDTO dto = new BoletimOcorrenciaDTO();
+		dto.setId(obj.getId());
 		dto.setDataOcorrencia(obj.getDataOcorrencia());
 		dto.setEstacao(obj.getEstacao());
 		dto.setHistorico(obj.getHistorico());

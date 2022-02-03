@@ -48,6 +48,7 @@ public class ParteOcorrencia {
 	
 	public static ParteOcorrencia convert(ParteOcorrenciaDTO obj) {
 		ParteOcorrencia model = new ParteOcorrencia();
+		model.setId(obj.getId());
 		model.setAltura(obj.getAltura());
 		model.setDataNascimento(obj.getDataNascimento());
 		model.setEndereco(obj.getEndereco());

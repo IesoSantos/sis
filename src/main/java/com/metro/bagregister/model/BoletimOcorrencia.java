@@ -56,6 +56,7 @@ public class BoletimOcorrencia {
 	
 	public static BoletimOcorrencia convert(BoletimOcorrenciaDTO dto) {
 		BoletimOcorrencia model = new BoletimOcorrencia();
+		model.setId(dto.getId());
 		model.setDataOcorrencia(dto.getDataOcorrencia());
 		model.setEstacao(dto.getEstacao());
 		model.setHistorico(dto.getHistorico());

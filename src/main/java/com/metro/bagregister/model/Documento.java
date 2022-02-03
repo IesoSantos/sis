@@ -33,6 +33,7 @@ public class Documento {
 	
 	public static Documento convert(DocumentoDTO dto) {
 		Documento model = new Documento();
+		model.setId(dto.getId());
 		model.setNumeroIdentificador(dto.getNumeroIdentificador());
 		model.setTipoDocumento(dto.getTipoDocumento());
 		return model;
