@@ -23,8 +23,8 @@ public class ParteOcorrenciaService {
 	@Autowired
 	private ParteOcorrenciaRepository repository;
 	
-	public ParteOcorrencia save(ParteOcorrencia obj) {
-		return repository.save(obj);
+	public ParteOcorrenciaDTO save(ParteOcorrencia obj) {
+		return ParteOcorrenciaDTO.convert(repository.save(obj));
 	}
 	
 	public List<ParteOcorrenciaDTO> getAll(){
