@@ -31,10 +31,10 @@ public class EnderecoService {
 				.collect(Collectors.toList());
 	}
 	
-	public Endereco findById(long id) {
+	public EnderecoDTO findById(long id) {
 		Optional<Endereco> obj = repository.findById(id);
 		if(obj.isPresent())
-			return obj.get();
+			return EnderecoDTO.convert(obj.get());
 		return null;
 	}
 	

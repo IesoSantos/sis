@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
+import com.metro.bagregister.dto.TelefoneDTO;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -32,4 +34,13 @@ public class Telefone {
 	private String numero;
 	@NotBlank
 	private TipoTelefone tipoTelefone;
+	
+	public static Telefone convert(TelefoneDTO dto) {
+		Telefone model = new Telefone();
+		model.setDdd(dto.getDdd());
+		model.setId(dto.getId());
+		model.setNumero(dto.getNumero());
+		model.setTipoTelefone(dto.getTipoTelefone());
+		return model;
+	}
 }

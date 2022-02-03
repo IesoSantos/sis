@@ -31,10 +31,10 @@ public class DocumentoService {
 				.collect(Collectors.toList());
 	}
 	
-	public Documento findById(long id) {
+	public DocumentoDTO findById(long id) {
 		Optional<Documento> obj = repository.findById(id);
 		if(obj.isPresent())
-			return obj.get();
+			return DocumentoDTO.convert(obj.get());
 		return null;
 	}
 	

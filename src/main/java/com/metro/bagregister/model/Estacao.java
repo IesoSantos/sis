@@ -11,6 +11,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import com.metro.bagregister.dto.EstacaoDTO;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -32,4 +34,12 @@ public class Estacao {
 	private String linha;
 	@NotBlank
 	private String estacao;
+	
+	public static Estacao convert(EstacaoDTO dto) {
+		Estacao model = new Estacao();
+		model.setEstacao(dto.getEstacao());
+		model.setId(dto.getId());
+		model.setLinha(dto.getLinha());
+		return model;
+	}
 }

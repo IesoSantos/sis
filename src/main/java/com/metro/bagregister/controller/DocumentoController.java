@@ -47,7 +47,7 @@ public class DocumentoController {
 	
 	@PutMapping
 	public ResponseEntity<DocumentoDTO> update(@RequestBody @Valid DocumentoDTO dto){
-		Documento obj = service.findById(dto.getId());
+		Documento obj = Documento.convert(service.findById(dto.getId()));
 		if(obj!=null) {
 			return ResponseEntity.status(HttpStatus.OK).body(
 					service.save(dto));
@@ -57,7 +57,7 @@ public class DocumentoController {
 	
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Void> delete(Long id){
-		Documento obj = service.findById(id);
+		Documento obj = Documento.convert(service.findById(id));
 		if(obj!=null) {
 			service.delete(obj);
 			return ResponseEntity.status(HttpStatus.OK).build();

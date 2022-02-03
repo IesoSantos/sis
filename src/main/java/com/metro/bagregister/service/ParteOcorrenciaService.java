@@ -24,10 +24,6 @@ public class ParteOcorrenciaService {
 	@Autowired
 	private ParteOcorrenciaRepository repository;
 	
-	public ParteOcorrenciaDTO save(ParteOcorrencia obj) {
-		return ParteOcorrenciaDTO.convert(repository.save(obj));
-	}
-	
 	public List<ParteOcorrenciaDTO> findAll(){
 		List<ParteOcorrencia> lista = repository.findAll();
 		return lista
@@ -43,13 +39,17 @@ public class ParteOcorrenciaService {
 		return null;
 	}
 	
-	public ParteOcorrenciaDTO delete(ParteOcorrencia obj) {
-		repository.delete(obj);
-		return ParteOcorrenciaDTO.convert(obj);
+	public ParteOcorrenciaDTO save(ParteOcorrencia obj) {
+		return ParteOcorrenciaDTO.convert(repository.save(obj));
 	}
 	
 	public ParteOcorrencia update(ParteOcorrencia obj) {
 		return repository.save(obj);
+	}
+	
+	public ParteOcorrenciaDTO delete(ParteOcorrencia obj) {
+		repository.delete(obj);
+		return ParteOcorrenciaDTO.convert(obj);
 	}
 
 }

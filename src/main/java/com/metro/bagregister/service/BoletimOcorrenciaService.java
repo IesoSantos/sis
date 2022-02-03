@@ -28,10 +28,10 @@ public class BoletimOcorrenciaService {
 		return repository.findAll().stream().map(BoletimOcorrenciaDTO::convert).collect(Collectors.toList());
 	}
 	
-	public BoletimOcorrencia findById(long id) {
+	public BoletimOcorrenciaDTO findById(long id) {
 		Optional<BoletimOcorrencia> obj = repository.findById(id);
 		if(obj.isPresent())
-			return obj.get();
+			return BoletimOcorrenciaDTO.convert(obj.get());
 		return null;
 	}
 	

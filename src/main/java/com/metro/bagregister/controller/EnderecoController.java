@@ -60,7 +60,7 @@ public class EnderecoController {
 	
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Void> delete(@PathVariable long id){
-		Endereco obj = service.findById(id);
+		Endereco obj = Endereco.convert(service.findById(id));
 		if(obj!=null) {
 			service.delete(obj);
 			return ResponseEntity.status(HttpStatus.OK).build();
