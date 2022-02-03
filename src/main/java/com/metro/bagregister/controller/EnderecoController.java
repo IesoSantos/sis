@@ -20,55 +20,52 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.metro.bagregister.dto.ParteOcorrenciaDTO;
-import com.metro.bagregister.model.ParteOcorrencia;
-import com.metro.bagregister.service.ParteOcorrenciaService;
+import com.metro.bagregister.dto.EnderecoDTO;
+import com.metro.bagregister.model.Endereco;
+import com.metro.bagregister.service.EnderecoService;
 
 /**
  * @author Anderson dos Reis Santos
  *
  */
 @RestController
-@RequestMapping("/parte-ocorrencia")
-public class ParteOcorrenciaController {
+@RequestMapping("/endereco")
+public class EnderecoController {
 	
 	@Autowired
-	private ParteOcorrenciaService service;
+	private EnderecoService service;
 	
 	@GetMapping
-	public List<ParteOcorrenciaDTO> lista(){
+	public List<EnderecoDTO> findAll(){
 		return service.findAll();
 	}
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public ParteOcorrenciaDTO add(@RequestBody @Valid ParteOcorrenciaDTO dto) {
-		
-		return service.save(ParteOcorrencia.convert(dto));
+	public EnderecoDTO add(@RequestBody @Valid EnderecoDTO obj) {
+		return service.save(Endereco.convert(obj));
 	}
 	
 	@PutMapping
-	public ResponseEntity<ParteOcorrenciaDTO> update(@RequestBody @Valid ParteOcorrenciaDTO dto){
-		
-		if(service.findById(dto.getId())!=null) {
-			return ResponseEntity.
-				status(HttpStatus.OK).
-				body(
-								service.save(ParteOcorrencia.convert(dto)
-										
-								)						
-						);
+	public ResponseEntity<EnderecoDTO> update(@RequestBody @Valid EnderecoDTO obj){
+		if(service.findById(obj.getId())!= null) {
+			return ResponseEntity
+					.status(HttpStatus.OK)
+					.body(
+							service.save(Endereco.convert(obj))
+							);
 		}
-		return ResponseEntity.notFound().build();
+		return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 	}
 	
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Void> delete( @PathVariable Long id) {
-		ParteOcorrencia obj = service.findById(id);
-		if(obj==null) {
-			return ResponseEntity.noContent().build();
+	public ResponseEntity<Void> delete(@PathVariable long id){
+		Endereco obj = service.findById(id);
+		if(obj!=null) {
+			service.delete(obj);
+			return ResponseEntity.status(HttpStatus.OK).build();
 		}
-		service.delete(obj);
-		return ResponseEntity.status(HttpStatus.OK).build();
+		return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
 	}
+
 }

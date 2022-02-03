@@ -14,6 +14,7 @@ import lombok.Data;
 @Data
 public class EnderecoDTO {
 	
+	private long id;
 	private  String logradouro;
 	private String numero;	
 	private String complemento;	
@@ -24,6 +25,7 @@ public class EnderecoDTO {
 
 	public static EnderecoDTO convert(Endereco obj) {
 		EnderecoDTO dto = new EnderecoDTO();
+		dto.setId(obj.getId());
 		dto.setBairro(obj.getBairro());
 		dto.setCep(obj.getCep());
 		dto.setCidade(obj.getCidade());
