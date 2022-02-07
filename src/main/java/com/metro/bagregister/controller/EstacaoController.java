@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.metro.bagregister.dto.EstacaoDTO;
-import com.metro.bagregister.model.Estacao;
 import com.metro.bagregister.service.EstacaoService;
 
 /**
@@ -36,7 +35,7 @@ public class EstacaoController {
 	
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Void> delete(@PathVariable long id){
-		Estacao obj = Estacao.convert(service.findById(id));
+		EstacaoDTO obj = service.findById(id);
 		if(obj!=null) {
 			service.delete(obj);
 			return ResponseEntity.status(HttpStatus.OK).build();

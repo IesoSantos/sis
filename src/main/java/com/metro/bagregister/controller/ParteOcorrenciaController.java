@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.metro.bagregister.dto.ParteOcorrenciaDTO;
-import com.metro.bagregister.model.ParteOcorrencia;
 import com.metro.bagregister.service.ParteOcorrenciaService;
 
 /**
@@ -44,7 +43,7 @@ public class ParteOcorrenciaController {
 	@ResponseStatus(HttpStatus.CREATED)
 	public ParteOcorrenciaDTO add(@RequestBody @Valid ParteOcorrenciaDTO dto) {
 		
-		return service.save(ParteOcorrencia.convert(dto));
+		return service.save(dto);
 	}
 	
 	@PutMapping
@@ -54,9 +53,7 @@ public class ParteOcorrenciaController {
 			return ResponseEntity.
 				status(HttpStatus.OK).
 				body(
-								service.save(ParteOcorrencia.convert(dto)
-										
-								)						
+								service.save(dto)						
 						);
 		}
 		return ResponseEntity.notFound().build();
@@ -64,7 +61,7 @@ public class ParteOcorrenciaController {
 	
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Void> delete( @PathVariable Long id) {
-		ParteOcorrencia obj = service.findById(id);
+		ParteOcorrenciaDTO obj = service.findById(id);
 		if(obj==null) {
 			return ResponseEntity.noContent().build();
 		}

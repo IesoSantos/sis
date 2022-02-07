@@ -39,12 +39,12 @@ public class EstacaoService {
 		return null;
 	}
 	
-	public EstacaoDTO add(Estacao dto) {
-		return EstacaoDTO.convert(repository.save(dto));
+	public EstacaoDTO add(EstacaoDTO dto) {
+		return EstacaoDTO.convert(repository.save(Estacao.convert(dto)));
 	}
 	
-	public EstacaoDTO delete(Estacao obj) {
-		repository.delete(obj);
-		return EstacaoDTO.convert(obj);
+	public EstacaoDTO delete(EstacaoDTO dto) {
+		repository.delete(Estacao.convert(dto));
+		return dto;
 	}
 }

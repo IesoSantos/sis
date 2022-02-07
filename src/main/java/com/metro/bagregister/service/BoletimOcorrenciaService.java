@@ -35,13 +35,13 @@ public class BoletimOcorrenciaService {
 		return null;
 	}
 	
-	public BoletimOcorrenciaDTO save(BoletimOcorrenciaDTO obj) {
-		return BoletimOcorrenciaDTO.convert(repository.save(BoletimOcorrencia.convert(obj)));
+	public BoletimOcorrenciaDTO save(BoletimOcorrenciaDTO dto) {
+		return BoletimOcorrenciaDTO.convert(repository.save(BoletimOcorrencia.convert(dto)));
 	}
 	
-	public BoletimOcorrenciaDTO delete(BoletimOcorrencia obj) {
-		repository.delete(obj);
-		return BoletimOcorrenciaDTO.convert(obj);
+	public BoletimOcorrenciaDTO delete(BoletimOcorrencia dto) {
+		repository.delete(dto);
+		return BoletimOcorrenciaDTO.convert(dto);
 	}
 
 }

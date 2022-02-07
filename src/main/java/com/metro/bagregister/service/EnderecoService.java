@@ -38,13 +38,13 @@ public class EnderecoService {
 		return null;
 	}
 	
-	public EnderecoDTO save(Endereco obj) {
-		return EnderecoDTO.convert(repository.save(obj));
+	public EnderecoDTO save(EnderecoDTO dto) {
+		return EnderecoDTO.convert(repository.save(Endereco.convert(dto)));
 	}
 	
-	public EnderecoDTO delete(Endereco obj) {
-		repository.delete(obj);
-		return EnderecoDTO.convert(obj);
+	public EnderecoDTO delete(EnderecoDTO dto) {
+		repository.delete(Endereco.convert(dto));
+		return dto;
 	}
 
 }

@@ -32,24 +32,24 @@ public class ParteOcorrenciaService {
 				.collect(Collectors.toList());
 	}
 	
-	public ParteOcorrencia findById(Long id){
+	public ParteOcorrenciaDTO findById(Long id){
 		Optional<ParteOcorrencia>  obj = repository.findById(id);
 		if(obj.isPresent())
-			return obj.get();
+			return ParteOcorrenciaDTO.convert(obj.get());
 		return null;
 	}
 	
-	public ParteOcorrenciaDTO save(ParteOcorrencia obj) {
-		return ParteOcorrenciaDTO.convert(repository.save(obj));
+	public ParteOcorrenciaDTO save(ParteOcorrenciaDTO obj) {
+		return ParteOcorrenciaDTO.convert(repository.save(ParteOcorrencia.convert(obj)));
 	}
 	
-	public ParteOcorrencia update(ParteOcorrencia obj) {
-		return repository.save(obj);
+	public ParteOcorrencia update(ParteOcorrenciaDTO obj) {
+		return repository.save(ParteOcorrencia.convert(obj));
 	}
 	
-	public ParteOcorrenciaDTO delete(ParteOcorrencia obj) {
-		repository.delete(obj);
-		return ParteOcorrenciaDTO.convert(obj);
+	public ParteOcorrenciaDTO delete(ParteOcorrenciaDTO obj) {
+		repository.delete(ParteOcorrencia.convert(obj));
+		return obj;
 	}
 
 }

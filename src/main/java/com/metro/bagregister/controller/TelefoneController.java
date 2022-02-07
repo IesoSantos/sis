@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.metro.bagregister.dto.TelefoneDTO;
-import com.metro.bagregister.model.Telefone;
 import com.metro.bagregister.service.TelefoneService;
 
 /**
@@ -42,12 +41,12 @@ public class TelefoneController {
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public TelefoneDTO add(@RequestBody @Valid TelefoneDTO obj){
-		return service.add(Telefone.convert(obj));
+		return service.add(obj);
 	}
 	
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Void> delete(@PathVariable long id){
-		Telefone obj = Telefone.convert(service.findById(id));
+		TelefoneDTO obj = service.findById(id);
 		if(obj!=null) {
 			service.delete(obj);
 			return ResponseEntity.status(HttpStatus.OK).build();

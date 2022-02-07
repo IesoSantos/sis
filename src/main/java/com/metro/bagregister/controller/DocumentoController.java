@@ -57,7 +57,7 @@ public class DocumentoController {
 	
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Void> delete(Long id){
-		Documento obj = Documento.convert(service.findById(id));
+		DocumentoDTO obj = service.findById(id);
 		if(obj!=null) {
 			service.delete(obj);
 			return ResponseEntity.status(HttpStatus.OK).build();

@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.metro.bagregister.dto.EnderecoDTO;
-import com.metro.bagregister.model.Endereco;
 import com.metro.bagregister.service.EnderecoService;
 
 /**
@@ -43,7 +42,7 @@ public class EnderecoController {
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public EnderecoDTO add(@RequestBody @Valid EnderecoDTO obj) {
-		return service.save(Endereco.convert(obj));
+		return service.save(obj);
 	}
 	
 	@PutMapping
@@ -52,7 +51,7 @@ public class EnderecoController {
 			return ResponseEntity
 					.status(HttpStatus.OK)
 					.body(
-							service.save(Endereco.convert(obj))
+							service.save(obj)
 							);
 		}
 		return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
@@ -60,7 +59,7 @@ public class EnderecoController {
 	
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Void> delete(@PathVariable long id){
-		Endereco obj = Endereco.convert(service.findById(id));
+		EnderecoDTO obj = service.findById(id);
 		if(obj!=null) {
 			service.delete(obj);
 			return ResponseEntity.status(HttpStatus.OK).build();

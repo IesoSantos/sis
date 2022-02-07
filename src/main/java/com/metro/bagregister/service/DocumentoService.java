@@ -38,13 +38,13 @@ public class DocumentoService {
 		return null;
 	}
 	
-	public DocumentoDTO save(DocumentoDTO obj){
-		return DocumentoDTO.convert(repository.save(Documento.convert(obj)));
+	public DocumentoDTO save(DocumentoDTO dto){
+		return DocumentoDTO.convert(repository.save(Documento.convert(dto)));
 	}
 	
-	public DocumentoDTO delete (Documento obj) {
-		repository.delete(obj);
-		return DocumentoDTO.convert(obj);
+	public DocumentoDTO delete (DocumentoDTO obj) {
+		repository.delete(Documento.convert(obj));
+		return obj;
 	}
 
 }
