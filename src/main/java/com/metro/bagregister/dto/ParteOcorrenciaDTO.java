@@ -8,6 +8,8 @@ import java.util.List;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.Length;
+
 import com.metro.bagregister.model.Endereco;
 import com.metro.bagregister.model.Etnia;
 import com.metro.bagregister.model.ParteOcorrencia;
@@ -27,17 +29,23 @@ public class ParteOcorrenciaDTO {
 	private String nome;
 	private String nomeMae;
 	private String nomePai;
-	@NotBlank
+	@NotBlank(message = "Campo altura deve ser preenchido.")
+	@Length(min = 4, max = 4, message = "Campo altura deve ter o formato #.##.")
 	private float altura;
-	@NotBlank
+	@NotBlank(message = "Campo data de nascimento deve ser preenchido.")
+	@Length(min = 10, max = 10, message = "Campo data de nascimento deve ter o fomato ##/##/####.")
 	private LocalDate dataNascimento;
-	@NotBlank
+	@NotBlank(message = "Campo sexo deve ser preenchido.")
+	@Length(max = 1, message = "Campo sexo deve ser preenchido como M ou F.")
 	private Sexo sexo;
-	@NotNull
+	@NotNull(message = "Campo endereço deve ser preenchido.")
+	@Length(max = 200,message = "Campo endereço tem o tamanho máximo de 200 caracteres.")
 	private Endereco endereco;
-	@NotNull
+	@NotNull(message = "Campo etnia deve ser preenchido.")
+	@Length(max = 20, message = "Campo etnia tem o tamanho máximo de 20 caracteres.")
 	private Etnia etnia;
-	@NotBlank
+	@NotBlank(message = "Campo qualificação deve ser preenchido.")
+	@Length(min = 3, max = 20, message = "Campo qualificação tem o tamanho máximo de 20 caracteres.")
 	private String qualificacao;
 	private List<Telefone> telefone;
 	

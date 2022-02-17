@@ -39,13 +39,13 @@ public class TelefoneService {
 		return null;
 	}
 	
-	public TelefoneDTO add(TelefoneDTO obj) {
-		return TelefoneDTO.convert(repository.save(Telefone.convert(obj)));
+	public TelefoneDTO save(TelefoneDTO dto) {
+		return TelefoneDTO.convert(repository.save(Telefone.convert(dto)));
 	}
 	
-	public TelefoneDTO delete(TelefoneDTO obj) {
-		repository.delete(Telefone.convert(obj));
-		return obj;
+	public TelefoneDTO delete(TelefoneDTO dto) {
+		repository.delete(Telefone.convert(dto));
+		return dto;
 	}
 
 }

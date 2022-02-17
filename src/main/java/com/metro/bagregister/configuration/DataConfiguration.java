@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.metro.bagregister.controller;
+package com.metro.bagregister.configuration;
 
 import javax.sql.DataSource;
 

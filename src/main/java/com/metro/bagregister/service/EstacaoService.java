@@ -39,7 +39,7 @@ public class EstacaoService {
 		return null;
 	}
 	
-	public EstacaoDTO add(EstacaoDTO dto) {
+	public EstacaoDTO save(EstacaoDTO dto) {
 		return EstacaoDTO.convert(repository.save(Estacao.convert(dto)));
 	}
 	

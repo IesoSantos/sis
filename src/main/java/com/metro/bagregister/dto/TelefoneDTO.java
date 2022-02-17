@@ -5,6 +5,8 @@ package com.metro.bagregister.dto;
 
 import javax.validation.constraints.NotBlank;
 
+import org.hibernate.validator.constraints.Length;
+
 import com.metro.bagregister.model.Telefone;
 import com.metro.bagregister.model.TipoTelefone;
 
@@ -18,11 +20,14 @@ import lombok.Data;
 public class TelefoneDTO {
 	
 	private long id;
-	@NotBlank
+	@NotBlank(message = "Campo DDD deve ser preenchido.")
+	@Length(min = 2, max = 2, message = "DDD deve ser 2 números.")
 	private  String ddd;
-	@NotBlank
+	@NotBlank(message = "Campo número de telefone deve ser preenchido.")
+	@Length(min = 9, max = 10, message = "Campo número de telefone deve ser preenchido corretamente.")
 	private String numero;
-	@NotBlank
+	@NotBlank(message = "Campo tipo de telefone deve ser preenchido.")
+	@Length(max = 50, message = "Campo tipo de telefone tem o tamanho máximo de 20 caracteres.")
 	private TipoTelefone tipoTelefone;
 	
 	public static TelefoneDTO convert(Telefone obj) {

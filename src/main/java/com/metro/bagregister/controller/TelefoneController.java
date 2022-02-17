@@ -10,6 +10,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -40,8 +41,14 @@ public class TelefoneController {
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public TelefoneDTO add(@RequestBody @Valid TelefoneDTO obj){
-		return service.add(obj);
+	public ResponseEntity<Response<TelefoneDTO>> add(@RequestBody @Valid TelefoneDTO obj, BindingResult result){
+		Response<TelefoneDTO> response = new Response<>();
+		if(result.hasErrors()) {
+			result.getAllErrors().forEach(error->response.getErrors().add(error.getDefaultMessage()));
+			return ResponseEntity.badRequest().body(response);
+		}
+		response.setData(service.save(obj));
+		return ResponseEntity.ok(response);
 	}
 	
 	@DeleteMapping("/{id}")

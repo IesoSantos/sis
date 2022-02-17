@@ -9,6 +9,8 @@ import java.util.List;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.Length;
+
 import com.metro.bagregister.model.BoletimOcorrencia;
 import com.metro.bagregister.model.Estacao;
 import com.metro.bagregister.model.ParteOcorrencia;
@@ -25,13 +27,14 @@ public class BoletimOcorrenciaDTO {
 	private long id;
 	@NotNull
 	private List<ParteOcorrencia> partesDaOcorrencia;
-	@NotBlank
+	@NotBlank(message = "Campo histórico deve ser preenchido.")
 	private String historico;
-	@NotBlank
+	@NotBlank(message = "Campo data da ocorrência deve ser preenchido.")
+	@Length(min = 10, max = 10, message = "Campo data da ocorrência deve ter o fomato ##/##/####.")
 	private LocalDate dataOcorrencia;
 	@NotBlank
 	private Estacao estacao;
-	@NotBlank
+	@NotBlank(message = "Campo natureza do B.O deve ser preenchido.")
 	private String naturezaBO;
 	
 	public static BoletimOcorrenciaDTO convert(BoletimOcorrencia obj) {
